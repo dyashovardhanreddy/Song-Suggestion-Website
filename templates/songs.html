@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+	Songs
+{% endblock %}
+{% block content %}
+	<center><h1 class="mt-4 mb-5">Songs</h1></center>
+	{% if emotion %}
+		<center><img src="../static/images/original.jpg" width="500" height="400"></center>		
+		<center class="my-4"><span>Your Face emotion detected is <b>{{ emotion }}</b></span></center>
+	{% endif %}
+	<table class="table">
+		<tr class="table_header">
+			{% for header in table_header %}
+				<th class="table_cell"><b>{{ header }}</b></th>
+			{% endfor %}
+		</tr classtable_row>
+		{% for song in songs %}
+			<tr>
+				<td class="table_cell"> {{ song.category }}</td>
+				<td> {{ song.name }}</td>
+				<td> <a href="{{ song.link }}">link</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

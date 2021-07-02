@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+home
+{% endblock %}
+{% block content %}
+    <div class="main-block" >
+        
+        <center><h1 style="font-family: Georgia, serif;" class="my-5">Get Songs According to your face mood!!!!!</h1></center>
+        <div id="face-video">
+            <center><img src="{{ src }}"  id="video" width="50%"></center>
+        </div>
+        <center>
+            <button  id="start-btn" class="mt-4 ml-5"  type="submit" onclick="startCam()">Start Camera</button>
+            <button  id="stop-btn" class="mt-4 ml-5"  type="submit" onclick="stopCam()" >Stop Camera</button>
+            <button  id="predict-btn" class="mt-4 ml-5"  type="submit" onclick="predict()" >Predict</button>
+        </center>
+    </div>
+    <script type="text/javascript">
+        window.onload=function() {
+            console.log("in main");
+            if("disable"=="{{ start_btn }}")
+                document.getElementById("start-btn").setAttribute("disabled","{{ start_btn }}");
+            if("disable"=="{{ stop_btn }}")
+                document.getElementById("stop-btn").setAttribute("disabled","{{ stop_btn }}");
+            if("disable"=="{{ predict_btn }}")
+                document.getElementById("predict-btn").setAttribute("disabled","{{ predict_btn }}");
+        }
+        function startCam(){
+            location.href="{{ url_for('home',action='start') }}";   
+        }
+        function stopCam(){
+            location.href="{{ url_for('home',action='stop') }}";
+        }
+        function predict(){
+            console.log("predict")
+            location.href="{{ url_for('home',action='predict') }}"
+        }
+    </script>
+{% endblock %}
+        
